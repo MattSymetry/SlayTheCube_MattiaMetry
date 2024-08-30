@@ -10,17 +10,19 @@ namespace NueGames.NueDeck.Scripts.Characters
         public StatusType StatusType { get; set; }
         public int StatusValue { get; set; }
         public bool DecreaseOverTurn { get; set; } // If true, decrease on turn end
+        public int DecreaseAmount { get; set; } // Amount to decrease on turn end
         public bool IsPermanent { get; set; } // If true, status can not be cleared during combat
         public bool IsActive { get; set; }
         public bool CanNegativeStack { get; set; }
         public bool ClearAtNextTurn { get; set; }
         
         public Action OnTriggerAction;
-        public StatusStats(StatusType statusType,int statusValue,bool decreaseOverTurn = false, bool isPermanent = false,bool isActive = false,bool canNegativeStack = false,bool clearAtNextTurn = false)
+        public StatusStats(StatusType statusType,int statusValue,bool decreaseOverTurn = false, bool isPermanent = false,bool isActive = false,bool canNegativeStack = false,bool clearAtNextTurn = false, int decreaseAmount = 1)
         {
             StatusType = statusType;
             StatusValue = statusValue;
             DecreaseOverTurn = decreaseOverTurn;
+            DecreaseAmount = decreaseAmount;
             IsPermanent = isPermanent;
             IsActive = isActive;
             CanNegativeStack = canNegativeStack;
@@ -66,10 +68,15 @@ namespace NueGames.NueDeck.Scripts.Characters
             StatusDict[StatusType.Poison].DecreaseOverTurn = true;
             StatusDict[StatusType.Poison].OnTriggerAction += DamagePoison;
 
+            StatusDict[StatusType.Gassed].DecreaseOverTurn = true;
+            StatusDict[StatusType.Gassed].DecreaseAmount = 2; // Set gas to decrease 2 each turn
+            StatusDict[StatusType.Gassed].OnTriggerAction += DamageGas;
+
             StatusDict[StatusType.Block].ClearAtNextTurn = true;
 
             StatusDict[StatusType.Strength].CanNegativeStack = true;
             StatusDict[StatusType.Dexterity].CanNegativeStack = true;
+            StatusDict[StatusType.GasAmplification].CanNegativeStack = true; // Allow gas to be debuffed
             
             StatusDict[StatusType.Stun].DecreaseOverTurn = true;
             StatusDict[StatusType.Stun].OnTriggerAction += CheckStunStatus;
@@ -194,7 +201,7 @@ namespace NueGames.NueDeck.Scripts.Characters
             }
             
             if (StatusDict[targetStatus].DecreaseOverTurn) 
-                StatusDict[targetStatus].StatusValue--;
+                StatusDict[targetStatus].StatusValue -= StatusDict[targetStatus].DecreaseAmount; // Decrease given amount for each type
             
             if (StatusDict[targetStatus].StatusValue == 0)
                 if (!StatusDict[targetStatus].IsPermanent)
@@ -208,6 +215,12 @@ namespace NueGames.NueDeck.Scripts.Characters
         {
             if (StatusDict[StatusType.Poison].StatusValue<=0) return;
             Damage(StatusDict[StatusType.Poison].StatusValue,true);
+        }
+
+        private void DamageGas()
+        {
+            if (StatusDict[StatusType.Gassed].StatusValue<=0) return;
+            Damage(StatusDict[StatusType.Gassed].StatusValue,true);
         }
         
         public void CheckStunStatus()

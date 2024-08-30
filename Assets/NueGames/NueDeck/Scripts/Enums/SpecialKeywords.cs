@@ -7,6 +7,9 @@
         Poison,
         Exhaust,
         Dexterity,
-        Stun
+        Stun,
+        Gassed,
+        GasAmplification,
+        ToxicCompression,
     }
 }

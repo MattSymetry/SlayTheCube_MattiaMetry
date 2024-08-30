@@ -11,6 +11,10 @@
         EarnMana,
         LifeSteal,
         Stun,
-        Exhaust
+        Exhaust,
+        Gassed,
+        AmplifyGas,
+        CompressToxic,
+        CreateContainer
     }
 }

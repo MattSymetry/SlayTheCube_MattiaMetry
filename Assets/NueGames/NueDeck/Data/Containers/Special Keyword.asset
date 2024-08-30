@@ -26,3 +26,5 @@ MonoBehaviour:
       for this combat
   - specialKeyword: 5
     contentText: Can not use any action
+  - specialKeyword: 6
+    contentText: Damage per round. Ignores <color=blue>block</color>.

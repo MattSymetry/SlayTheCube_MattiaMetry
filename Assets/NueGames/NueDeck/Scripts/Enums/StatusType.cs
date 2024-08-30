@@ -7,6 +7,9 @@
         Poison,
         Strength,
         Dexterity,
-        Stun
+        Stun,
+        Gassed,
+        GasAmplification,
+        ToxicCompression
     }
 }
