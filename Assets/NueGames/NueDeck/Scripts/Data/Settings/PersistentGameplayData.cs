@@ -25,6 +25,8 @@ namespace NueGames.NueDeck.Scripts.Data.Settings
         [SerializeField] private List<CardData> currentCardsList;
         [SerializeField] private List<AllyHealthData> allyHealthDataDataList;
 
+        private bool[]  roomsCleared;
+
         public PersistentGameplayData(GameplayData gameplayData)
         {
             _gameplayData = gameplayData;
@@ -143,6 +145,26 @@ namespace NueGames.NueDeck.Scripts.Data.Settings
         {
             get => currentGold;
             set => currentGold = value;
+        }
+
+        public void InitRooms(int roomCount)
+        {
+            if (roomsCleared != null && roomsCleared.Length == roomCount) return;
+            roomsCleared = new bool[roomCount];
+            for (int i = 0; i < roomCount; i++)
+            {
+                roomsCleared[i] = false;
+            }
+        }
+
+        public bool IsRoomCleared(int roomId)
+        {
+            return roomsCleared[roomId];
+        }
+
+        public void SetRoomCleared(int roomId)
+        {
+            roomsCleared[roomId] = true;
         }
         
         #endregion

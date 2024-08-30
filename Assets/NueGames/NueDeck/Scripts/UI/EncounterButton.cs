@@ -14,10 +14,21 @@ namespace NueGames.NueDeck.Scripts.UI
         [SerializeField] private bool isFinal;
         
         protected GameManager GameManager => GameManager.Instance;
+        private int roomNumber;
         
         private void Awake()
         {
             completedImage.gameObject.SetActive(false);
+        }
+
+        public void SetRoomNumber(int targetRoomNumber)
+        {
+            roomNumber = targetRoomNumber;
+        }
+
+        public void setCurrentEncounter()
+        {
+            GameManager.PersistentGameplayData.CurrentEncounterId = roomNumber;
         }
         
         public void SetStatus(EncounterButtonStatus targetStatus)

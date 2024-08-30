@@ -15,6 +15,7 @@ namespace NueGames.NueDeck.Scripts.Managers
         
         private void Start()
         {
+            GameManager.PersistentGameplayData.InitRooms(encounterButtonList.Count);
             PrepareEncounters();
         }
         
@@ -23,12 +24,21 @@ namespace NueGames.NueDeck.Scripts.Managers
             for (int i = 0; i < EncounterButtonList.Count; i++)
             {
                 var btn = EncounterButtonList[i];
-                if (GameManager.PersistentGameplayData.CurrentEncounterId == i)
-                    btn.SetStatus(EncounterButtonStatus.Active);
-                else if (GameManager.PersistentGameplayData.CurrentEncounterId > i)
+                btn.SetRoomNumber(i);
+                if (GameManager.PersistentGameplayData.IsRoomCleared(i))
                     btn.SetStatus(EncounterButtonStatus.Completed);
-                else
-                    btn.SetStatus(EncounterButtonStatus.Passive);
+                else {
+                    // check if any neighbour is completed - its a 5x5 grid in the array
+                    if ((i == 0)
+                        || (i % 5 != 0 && GameManager.PersistentGameplayData.IsRoomCleared(i - 1))
+                        || (i % 5 != 4 && GameManager.PersistentGameplayData.IsRoomCleared(i + 1))
+                        || (i > 4 && GameManager.PersistentGameplayData.IsRoomCleared(i - 5))
+                        || (i < 20 && GameManager.PersistentGameplayData.IsRoomCleared(i + 5))
+                        )
+                        btn.SetStatus(EncounterButtonStatus.Active);
+                    else
+                        btn.SetStatus(EncounterButtonStatus.Passive);
+                }
             }
         }
     }
