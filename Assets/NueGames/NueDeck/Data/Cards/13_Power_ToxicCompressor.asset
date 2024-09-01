@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 13_toxic_compressor
   cardName: Toxic compressor
   manaCost: 1
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: 21300000, guid: c7860a13ddd9443dcb8e41a1a3593d82, type: 3}
   rarity: 0
   usableWithoutTarget: 1
   exhaustAfterPlay: 0

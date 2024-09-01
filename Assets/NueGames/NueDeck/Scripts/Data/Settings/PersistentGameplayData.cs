@@ -22,6 +22,7 @@ namespace NueGames.NueDeck.Scripts.Data.Settings
         [SerializeField] private int currentStageId;
         [SerializeField] private int currentEncounterId;
         [SerializeField] private bool isFinalEncounter;
+        [SerializeField] private bool isBossEncounter;
         [SerializeField] private List<CardData> currentCardsList;
         [SerializeField] private List<AllyHealthData> allyHealthDataDataList;
 
@@ -65,6 +66,7 @@ namespace NueGames.NueDeck.Scripts.Data.Settings
             CurrentGold = 0;
             CurrentCardsList = new List<CardData>();
             IsFinalEncounter = false;
+            IsBossEncounter = false;
             allyHealthDataDataList = new List<AllyHealthData>();
         }
 
@@ -128,6 +130,12 @@ namespace NueGames.NueDeck.Scripts.Data.Settings
         {
             get => isFinalEncounter;
             set => isFinalEncounter = value;
+        }
+
+        public bool IsBossEncounter
+        {
+            get => isBossEncounter;
+            set => isBossEncounter = value;
         }
 
         public List<CardData> CurrentCardsList

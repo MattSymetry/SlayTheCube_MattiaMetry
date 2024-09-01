@@ -209,7 +209,7 @@ namespace NueGames.NueDeck.Scripts.Managers
             CurrentEncounter = GameManager.EncounterData.GetEnemyEncounter(
                 GameManager.PersistentGameplayData.CurrentStageId,
                 GameManager.PersistentGameplayData.CurrentEncounterId,
-                GameManager.PersistentGameplayData.IsFinalEncounter);
+                GameManager.PersistentGameplayData.IsBossEncounter);
             
             var enemyList = CurrentEncounter.EnemyList;
             for (var i = 0; i < enemyList.Count; i++)

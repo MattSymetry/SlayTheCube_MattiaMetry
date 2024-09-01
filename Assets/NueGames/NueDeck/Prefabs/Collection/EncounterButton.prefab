@@ -405,9 +405,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3059767922682780413}
-        m_TargetAssemblyTypeName: NueDeck.Scripts.Utils.SceneChanger, Assembly-CSharp
-        m_MethodName: OpenCombatScene
+      - m_Target: {fileID: 3059767922682780414}
+        m_TargetAssemblyTypeName: NueGames.NueDeck.Scripts.UI.EncounterButton, Assembly-CSharp
+        m_MethodName: EnterRoom
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

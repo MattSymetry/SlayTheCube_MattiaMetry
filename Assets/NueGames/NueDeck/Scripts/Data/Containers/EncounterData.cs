@@ -19,10 +19,11 @@ namespace NueGames.NueDeck.Scripts.Data.Containers
         public bool EncounterRandomlyAtStage => encounterRandomlyAtStage;
         public List<EnemyEncounterStage> EnemyEncounterList => enemyEncounterList;
 
-        public EnemyEncounter GetEnemyEncounter(int stageId = 0,int encounterId =0,bool isFinal = false)
+        public EnemyEncounter GetEnemyEncounter(int stageId = 0,int encounterId =0,bool isBoss = false)
         {
             var selectedStage = EnemyEncounterList.First(x => x.StageId == stageId);
-            if (isFinal) return selectedStage.BossEncounterList.RandomItem();
+            if (isBoss) return selectedStage.BossEncounterList.RandomItem();
+            return selectedStage.EnemyEncounterList.RandomItem(); // if not boss, return random enemy encounter
            
             return EncounterRandomlyAtStage
                 ? selectedStage.EnemyEncounterList.RandomItem()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using NueGames.NueDeck.Scripts.Data.Collection;
 using NueGames.NueDeck.Scripts.UI;
 using NueGames.NueDeck.Scripts.UI.Reward;
@@ -19,6 +20,7 @@ namespace NueGames.NueDeck.Scripts.Managers
         [SerializeField] private InformationCanvas informationCanvas;
         [SerializeField] private RewardCanvas rewardCanvas;
         [SerializeField] private InventoryCanvas inventoryCanvas;
+        [SerializeField] private MiscellaneousCanvas miscellaneousCanvas;
         
 
         [Header("Fader")]
@@ -31,6 +33,7 @@ namespace NueGames.NueDeck.Scripts.Managers
         public InformationCanvas InformationCanvas => informationCanvas;
         public RewardCanvas RewardCanvas => rewardCanvas;
         public InventoryCanvas InventoryCanvas => inventoryCanvas;
+        public MiscellaneousCanvas MiscellaneousCanvas => miscellaneousCanvas;
         #endregion
 
         #region Setup
@@ -57,6 +60,13 @@ namespace NueGames.NueDeck.Scripts.Managers
            SetCanvas(InventoryCanvas,true,true);
            InventoryCanvas.ChangeTitle(title);
            InventoryCanvas.SetCards(cardList);
+        }
+
+        public void OpenMiscellaneous(string description, Sprite img)
+        {
+            SetCanvas(MiscellaneousCanvas,true,true);
+            MiscellaneousCanvas.ChangeDescription(description);
+            MiscellaneousCanvas.SetImage(img);
         }
         
         public void SetCanvas(CanvasBase targetCanvas,bool open,bool reset = false)

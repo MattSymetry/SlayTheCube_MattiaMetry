@@ -12,6 +12,7 @@ namespace NueGames.NueDeck.Scripts.UI
         [SerializeField] private Button button;
         [SerializeField] private Image completedImage;
         [SerializeField] private bool isFinal;
+        private RoomEventManager RoomEventManager => RoomEventManager.Instance;
         
         protected GameManager GameManager => GameManager.Instance;
         private int roomNumber;
@@ -29,6 +30,11 @@ namespace NueGames.NueDeck.Scripts.UI
         public void setCurrentEncounter()
         {
             GameManager.PersistentGameplayData.CurrentEncounterId = roomNumber;
+        }
+
+        public void EnterRoom()
+        {
+            RoomEventManager.EnterRoom();
         }
         
         public void SetStatus(EncounterButtonStatus targetStatus)
