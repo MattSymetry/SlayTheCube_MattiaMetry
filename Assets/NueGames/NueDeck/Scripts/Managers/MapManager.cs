@@ -41,5 +41,12 @@ namespace NueGames.NueDeck.Scripts.Managers
                 }
             }
         }
+
+        public void UpdateButton(int roomNumber)
+        {
+            EncounterButtonList[roomNumber].SetStatus(EncounterButtonStatus.Completed);
+            GameManager.PersistentGameplayData.SetRoomCleared(roomNumber);
+            PrepareEncounters();
+        }
     }
 }

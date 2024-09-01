@@ -62,7 +62,11 @@ namespace NueGames.NueDeck.Scripts.Managers
             UIManager.OpenMiscellaneous(miscellaneousData.Description, miscellaneousData.Image);
             miscellaneousData.InvokeFunction();
             UIManager.InformationCanvas.ResetCanvas();
-            GameManager.PersistentGameplayData.SetRoomCleared(GameManager.PersistentGameplayData.CurrentEncounterId);
+            GameObject mapManager = GameObject.Find("MapManager"); // Find MapManager in the scene and update the button
+            if (mapManager != null)
+            {
+                mapManager.GetComponent<MapManager>().UpdateButton(GameManager.PersistentGameplayData.CurrentEncounterId);
+            }
         }
     }
 }
