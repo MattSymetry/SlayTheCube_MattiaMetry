@@ -1,5 +1,5 @@
 # Slay the Cube - Task Implementation | Mattia Metry
-
+Unity Verison: Unity 2022.3.30f1
 ## Overview
 
 This repository contains the implementations for the tasks provided by PEC Game Development GmbH as part of the application process for the position of Game Developer. I implemented most tasks, even some art ones, but I do focus on and apply for the programming role. 
