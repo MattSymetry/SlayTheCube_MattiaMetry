@@ -14,7 +14,7 @@ namespace NueGames.NueDeck.Scripts.Card.CardActions
             var targetCharacter = actionParameters.TargetCharacter;
             var selfCharacter = actionParameters.SelfCharacter;
             
-            var value = actionParameters.Value + selfCharacter.CharacterStats.StatusDict[StatusType.Strength].StatusValue;
+            var value = actionParameters.Value + selfCharacter.CharacterStats.StatusDict[StatusType.GasAmplification].StatusValue;
             if (actionParameters.CardData.Id == "11_toxic_gas_container") // Apply compressed toxic gas buff if the card is toxic gas container
             {
                 value += selfCharacter.CharacterStats.StatusDict[StatusType.ToxicCompression].StatusValue;

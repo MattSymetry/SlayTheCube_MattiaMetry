@@ -174,6 +174,11 @@ namespace NueGames.NueDeck.Scripts.Data.Settings
         {
             roomsCleared[roomId] = true;
         }
+
+        public List<CardData> GetAllCards()
+        {
+            return _gameplayData.AllCardsList;
+        }
         
         #endregion
     }

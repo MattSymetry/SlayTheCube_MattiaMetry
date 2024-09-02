@@ -28,7 +28,8 @@ public class MiscellaneousData : ScriptableObject
 
     private void Well()
     {
-        GameManager.PersistentGameplayData.AllyHealthDataList[0].CurrentHealth = GameManager.PersistentGameplayData.AllyHealthDataList[0].MaxHealth;
+        if (GameManager.PersistentGameplayData.AllyHealthDataList.Count > 0)
+            GameManager.PersistentGameplayData.AllyHealthDataList[0].CurrentHealth = GameManager.PersistentGameplayData.AllyHealthDataList[0].MaxHealth;
     }
 
     private void Staircase()

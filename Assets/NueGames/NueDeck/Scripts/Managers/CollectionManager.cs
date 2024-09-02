@@ -87,7 +87,7 @@ namespace NueGames.NueDeck.Scripts.Managers
 
         public void CreateCardsById(string targetCardName, int targetCount) // Creates new cards to the hand (does not take from the draw pile)
         {
-            var cardData = GameManager.PersistentGameplayData.CurrentCardsList.Find(x => x.Id == targetCardName);
+            var cardData = GameManager.PersistentGameplayData.GetAllCards().Find(x => x.Id == targetCardName);
             if (cardData == null) return;
             for (var i = 0; i < targetCount; i++)
             {
