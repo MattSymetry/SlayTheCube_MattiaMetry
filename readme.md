@@ -46,6 +46,7 @@ This repository contains the implementations for the tasks provided by PEC Game 
     - To create a new one:
         1. Open the 'Scripts/Miscellaneous/MiscellaneousData' ScriptableObject and add the new 'FunctionType' enume, the function that should be called and add it to the switch-case in 'InvokeFunction()'.
         2. Create a new miscellaneous object in 'Data/Miscellaneous'. Here you can add the description, image and choose whch function will get called based on the enum.
+        3. Add the new SO to the 'Prefabs/Core/RoomManager'
   - New boss has been added, but without any of the custom functionalities.
 - **Remarks:**
   - Title screen and graphics integrated. (Not in any artistic way, only functionally)
